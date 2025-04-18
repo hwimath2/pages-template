@@ -26,6 +26,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 디버깅 단계 추가
+      - name: Debug permissions
+        run: |
+          echo "GitHub token permissions:"
+          echo "${{ toJson(github.token) }}"
+          echo "Repository visibility: ${{ github.repository_visibility }}"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
