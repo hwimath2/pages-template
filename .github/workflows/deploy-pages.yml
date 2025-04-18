@@ -10,6 +10,7 @@ permissions:
   contents: read    # 코드를 checkout 하기 위한 읽기 권한
   pages: write      # GitHub Pages 설정을 변경하고 배포하기 위한 쓰기 권한
   id-token: write   # OIDC 토큰을 사용하여 배포 작업 인증에 필요
+  actions: write    # 액션 실행 권한 추가
 
 concurrency:
   group: "pages"
@@ -30,6 +31,8 @@ jobs:
         with:
           # 이 옵션은 계속 유지합니다 (자동 활성화 시도)
           enablement: true
+          # 추가: 페이지 타입 설정
+          static_site_generator: "plain_html"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
